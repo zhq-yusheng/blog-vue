@@ -1,0 +1,78 @@
+{
+  "menuData": [
+    {
+      "entity": {
+        "id": 1,
+        "name": "usersManage",
+        "icon": "el-icon-message",
+        "alias": "发布博客管理"
+      },
+      "childs": [
+        {
+          "entity": {
+            "id": 0,
+            "name": "alluserManage",
+            "icon": "el-icon-loading",
+            "alias": "添加博客",
+            "value": {
+              "path": "/backstage/addBlog"
+            }
+          }
+        },
+        {
+          "entity": {
+            "id": 6,
+            "name": "alluserManage",
+            "icon": "el-icon-loading",
+            "alias": "博客类型管理",
+            "value": {
+              "path": "/backstage/blogType"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entity": {
+        "id": 2,
+        "name": "usersManage",
+        "icon": "el-icon-message",
+        "alias": "博客统计查看"
+      },
+      "childs": [
+        {
+          "entity": {
+            "id": 3,
+            "name": "alluserManage",
+            "icon": "el-icon-loading",
+            "alias": "博客统计",
+            "value": {
+              "path": "/backstage/blogcensus"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "entity": {
+        "id": 5,
+        "name": "myblog",
+        "icon": "el-icon-message",
+        "alias": "我的博客管理"
+      },
+      "childs": [
+        {
+          "entity": {
+            "id": 8,
+            "name": "alluserManage",
+            "icon": "el-icon-loading",
+            "alias": "我的博客",
+            "value": {
+              "path": "/backstage/myBlog"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

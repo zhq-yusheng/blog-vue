@@ -1,24 +1,4 @@
-# myblog
+# 博客前端
+使用技术: vue2.6 element-ui<br>
+联系我:QQ邮箱：2545763087@qq.com qq：2545763087
 
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
