@@ -100,7 +100,7 @@ export default {
     };
   },
   mounted() {
-    this.$router.push("/home");
+    //this.$router.push("/home");
 
     this.$refs.upload.$on("txImg", (imgUrl) => {
       this.user.imgurl = imgUrl;

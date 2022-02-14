@@ -92,7 +92,7 @@ export default {
       this.currPage = currPage;
     },
     toBlog(bid) {
-      window.open(`https://www.zhonghq.top/#/blog?id=${bid}`)
+      window.open(`http://localhost/#/blog?id=${bid}`)
     },
     search(){
       if(this.searchValue == ""){

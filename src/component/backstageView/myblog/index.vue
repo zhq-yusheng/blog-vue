@@ -23,14 +23,14 @@
               <span>{{ props.row.popularity }}</span>
             </el-form-item>
             <el-form-item label="博客地址">
-              <span>https://www.zhonghq.top/#/blog?id={{ props.row.bid }}</span>
+              <span>http://localhost/#/blog?id={{ props.row.bid }}</span>
             </el-form-item>
             <el-form-item label="操作">
               <el-button
                 size="mini"
                 type="danger"
                 icon="el-icon-delete"
-                @click="deletedBlog"
+                @click="deletedBlog(props.row.bid)"
                 circle
               ></el-button>
             </el-form-item>
@@ -40,6 +40,17 @@
       <el-table-column label="博客名称" prop="title"> </el-table-column>
       <el-table-column label="博客类型" prop="blogType"> </el-table-column>
       <el-table-column label="博客创建时间" prop="createDatetime">
+      </el-table-column>
+      <el-table-column label="是否置顶" prop="createDatetime">
+        <template slot-scope="scope">
+          <el-switch
+            v-model="scope.row.istoping"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+            @change="toping(scope)"
+          >
+          </el-switch>
+        </template>
       </el-table-column>
     </el-table>
     <!-- 分页条 -->
@@ -60,9 +71,9 @@
 
 <script>
 import setDataFromAxios from "../../../api/api";
-import deletedMyBlog from './deletedMyBlog'
+import deletedMyBlog from "./deletedMyBlog";
 export default {
-  components:{deletedMyBlog},
+  components: { deletedMyBlog },
   data() {
     return {
       pagesize: 8,
@@ -71,6 +82,7 @@ export default {
       total: 50,
       user: null,
       tableData: [],
+      istoping: false,
     };
   },
   beforeRouteEnter(to, from, next) {
@@ -81,13 +93,14 @@ export default {
   mounted() {
     this.getUser();
     this.getMyBlogData(this.user.uid, 1, this.pagesize);
-    this.$refs.deletedBlog.$on("deletedBlog",()=>{
-        this.getMyBlogData(this.user.uid, 1, this.pagesize);
-        this.deletedBlogIsShow = false;
-      })
+    this.$refs.deletedBlog.$on("deletedBlog", () => {
+      this.getMyBlogData(this.user.uid, 1, this.pagesize);
+      this.deletedBlogIsShow = false;
+    });
   },
   methods: {
     currPageChange(currPage) {
+      this.currPage = currPage;
       this.getMyBlogData(this.user.uid, currPage, this.pagesize);
     },
     getUser() {
@@ -127,6 +140,12 @@ export default {
         if (list[i].body.length > 30) {
           list[i].body = list[i].body.substring(0, 30);
         }
+
+        if (list[i].istoping == 0) {
+          list[i].istoping = false;
+        } else {
+          list[i].istoping = true;
+        }
       }
       return list;
     },
@@ -134,6 +153,19 @@ export default {
       console.log(bid);
       this.$refs.deletedBlog.init(bid);
       this.deletedBlogIsShow = true;
+    },
+    toping(value) {
+      console.log(value)
+      var flag = value.row.istoping ? 1 : 0;
+      setDataFromAxios(`/api/backstage/toping/${value.row.bid}/${flag}`, 'get')
+      .then(res =>{
+        if(res.code == 200){
+          this.$message({
+            message: "修改成功",
+              type: "success",
+          })
+        }
+      })
     },
   },
 };

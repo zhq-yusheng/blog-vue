@@ -9,6 +9,7 @@ export default new VueRouter({
             name:"index",
             path:"/",
             component:resolve =>require(["../component/userView/home"],resolve),
+            redirect:"/home",
             children:[
                 {
                     path:'home',

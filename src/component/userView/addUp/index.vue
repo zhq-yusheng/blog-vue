@@ -132,7 +132,7 @@ export default {
       );
     },
     goBackstage() {
-      window.open(`https://www.zhonghq.top/#/backstage?uid=${this.user.uid}`);
+      window.open(`http://localhost/#/backstage?uid=${this.user.uid}`);
     },
     getUser() {
       this.user = JSON.parse(sessionStorage.getItem("user"));

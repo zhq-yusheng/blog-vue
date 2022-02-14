@@ -8,7 +8,7 @@ import store from "../store"
 
 
 export  default function setDataFromAxios(url,type,data){
-    url = url.replace("/api","https://www.zhonghq.top:8080")
+    url = url.replace("/api","http://localhost:8080")
    return new Promise((resolve,reject)=>{
         if(type == 'get'){
         axios.get(url).then(response=>{

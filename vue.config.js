@@ -2,7 +2,7 @@ module.exports = {
   lintOnSave: false,//关闭语法检测
   devServer: {
     port: 80,
-    proxy: {
+    /* proxy: {
       '/api': {
         target: 'http://112.74.54.192:8080',
         ws: true, // 默认为true 支持websocket
@@ -12,6 +12,6 @@ module.exports = {
         } // 进行路径重写
       },
 
-    }
+    } */
   }
 }
